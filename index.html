@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Votre livre personnalisé · questionnaire</title>
+<style>
+:root { --bg: #fbf7f0; --card: #fff; --ink: #2b2622; --muted: #6f655b; --line: #e7dfd2; --accent: #d9825b; --accent-ink: #fff; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 760px; margin: 0 auto; padding: 24px 16px 80px; }
+header h1 { font-size: 28px; margin: 8px 0 4px; }
+header p { color: var(--muted); margin: 0 0 8px; }
+.studio { font-weight: 700; color: var(--accent); letter-spacing: .02em; }
+fieldset { border: 1px solid var(--line); background: var(--card); border-radius: 14px; padding: 18px; margin: 18px 0; }
+legend { font-weight: 700; padding: 0 6px; font-size: 18px; }
+label { display: block; font-weight: 600; margin: 12px 0 4px; }
+.hint { font-weight: 400; color: var(--muted); font-size: 14px; }
+input[type=text], input[type=email], input[type=tel], input[type=date], input[type=number], select, textarea {
+  width: 100%; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; font: inherit; background: #fffdf9; }
+textarea { min-height: 84px; resize: vertical; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 560px) { .row { grid-template-columns: 1fr; } }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.chips label { display: inline-flex; align-items: center; gap: 6px; font-weight: 500; margin: 0; padding: 6px 12px;
+  border: 1px solid var(--line); border-radius: 999px; background: #fffdf9; cursor: pointer; }
+.person { border-top: 1px dashed var(--line); padding-top: 8px; margin-top: 12px; }
+.photos { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-top: 10px; }
+.photo { border: 1px solid var(--line); border-radius: 10px; padding: 8px; background: #fffdf9; }
+.photo img { width: 100%; height: 130px; object-fit: cover; border-radius: 6px; }
+.photo input { margin-top: 6px; font-size: 14px; }
+.photo button { margin-top: 6px; font-size: 13px; }
+.consent { background: #fff6ea; border: 1px solid #f1d7b8; border-radius: 10px; padding: 12px; margin-top: 12px; }
+.actions { position: sticky; bottom: 0; background: linear-gradient(transparent, var(--bg) 30%); padding: 22px 0 8px; display: flex; gap: 10px; flex-wrap: wrap; }
+button { font: inherit; border-radius: 12px; padding: 12px 18px; border: 1px solid var(--line); background: #fff; cursor: pointer; }
+#share { background: #1f9d55; color: #fff; border-color: #1f9d55; font-weight: 700; }
+button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 700; }
+#msg { color: var(--muted); margin-top: 8px; min-height: 1.5em; }
+@media (max-width: 560px) { .actions { gap: 8px; padding-top: 14px; } .actions button { padding: 9px 12px; font-size: 14px; }
+  #share { flex: 1 1 100%; padding: 12px; font-size: 15px; } #dl, #copy { flex: 1; } }
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div class="studio" id="studioName">Votre studio</div>
+  <h1>Votre livre personnalisé</h1>
+  <p>Quelques questions pour écrire et illustrer une histoire unique. Répondez à ce que vous voulez : rien n'est obligatoire, sauf l'accord pour les photos si vous en envoyez. Vos réponses restent sur votre appareil jusqu'à ce que vous les envoyiez.</p>
+</header>
+
+<form id="f" autocomplete="on">
+<fieldset>
+  <legend>Vous</legend>
+  <div class="row">
+    <div><label for="c_nom">Votre nom</label><input type="text" id="c_nom" name="commanditaire.nom"></div>
+    <div><label for="c_lien">Votre lien avec le héros <span class="hint">(parent, parrain, ami…)</span></label><input type="text" id="c_lien" name="commanditaire.lien"></div>
+  </div>
+  <div class="row">
+    <div><label for="c_mail">E-mail</label><input type="email" id="c_mail" name="commanditaire.email"></div>
+    <div><label for="c_tel">Téléphone / WhatsApp</label><input type="tel" id="c_tel" name="commanditaire.telephone"></div>
+  </div>
+</fieldset>
+
+<fieldset>
+  <legend>Le livre</legend>
+  <label>Pour quelle occasion ?</label>
+  <div class="chips" data-name="livre.occasion">
+    <label><input type="radio" name="livre.occasion" value="anniversaire">Anniversaire</label>
+    <label><input type="radio" name="livre.occasion" value="naissance">Naissance</label>
+    <label><input type="radio" name="livre.occasion" value="fêtes">Fêtes de fin d'année</label>
+    <label><input type="radio" name="livre.occasion" value="rentrée">Rentrée</label>
+    <label><input type="radio" name="livre.occasion" value="arrivée d'un frère ou d'une sœur">Petit frère / petite sœur</label>
+    <label><input type="radio" name="livre.occasion" value="étape de vie">Étape à accompagner</label>
+    <label><input type="radio" name="livre.occasion" value="sans occasion">Juste pour le plaisir</label>
+  </div>
+  <label for="l_idee">Votre idée d'histoire <span class="hint">(même quelques mots : « il part sur la lune avec son chien »)</span></label>
+  <textarea id="l_idee" name="livre.idee"></textarea>
+  <label>Quel ton ?</label>
+  <div class="chips">
+    <label><input type="checkbox" name="livre.ton" value="tendre">Tendre</label>
+    <label><input type="checkbox" name="livre.ton" value="drôle">Drôle</label>
+    <label><input type="checkbox" name="livre.ton" value="aventure">Aventure</label>
+    <label><input type="checkbox" name="livre.ton" value="apaisant (histoire du soir)">Apaisant, pour le soir</label>
+    <label><input type="checkbox" name="livre.ton" value="magique">Magique</label>
+    <label><input type="checkbox" name="livre.ton" value="éducatif">Éducatif</label>
+  </div>
+  <label for="l_message">Un message ou une valeur à transmettre ? <span class="hint">(courage, partage, confiance en soi…)</span></label>
+  <input type="text" id="l_message" name="livre.valeur">
+  <label for="l_dedicace">Dédicace <span class="hint">(imprimée au début du livre)</span></label>
+  <textarea id="l_dedicace" name="livre.dedicace" style="min-height:60px"></textarea>
+  <div class="row">
+    <div><label for="l_langue">Langue(s) du livre</label><input type="text" id="l_langue" name="livre.langue" value="français"></div>
+    <div><label for="l_date">Date souhaitée</label><input type="date" id="l_date" name="livre.date_souhaitee"></div>
+  </div>
+  <label>Version souhaitée</label>
+  <div class="chips">
+    <label><input type="radio" name="livre.version" value="papier">Livre papier</label>
+    <label><input type="radio" name="livre.version" value="numérique">Numérique (PDF, livre à feuilleter)</label>
+    <label><input type="radio" name="livre.version" value="les deux">Les deux</label>
+  </div>
+  <label>Style d'illustration préféré</label>
+  <div class="chips">
+    <label><input type="checkbox" name="livre.style" value="aquarelle douce">Aquarelle douce</label>
+    <label><input type="checkbox" name="livre.style" value="film d'animation 3D">Film d'animation 3D</label>
+    <label><input type="checkbox" name="livre.style" value="crayons de couleur">Crayons de couleur</label>
+    <label><input type="checkbox" name="livre.style" value="papier découpé">Papier découpé</label>
+    <label><input type="checkbox" name="livre.style" value="couleurs wax">Couleurs wax</label>
+    <label><input type="checkbox" name="livre.style" value="manga doux">Manga doux</label>
+    <label><input type="checkbox" name="livre.style" value="bande dessinée">Bande dessinée</label>
+    <label><input type="checkbox" name="livre.style" value="au choix du studio">Je vous fais confiance</label>
+  </div>
+</fieldset>
+
+<fieldset>
+  <legend>Le héros ou l'héroïne</legend>
+  <div class="row">
+    <div><label for="h_prenom">Prénom</label><input type="text" id="h_prenom" name="heros.prenom"></div>
+    <div><label for="h_age">Âge</label><input type="text" id="h_age" name="heros.age" placeholder="ex. 5 ans"></div>
+  </div>
+  <label>Dans l'histoire, on dit…</label>
+  <div class="chips">
+    <label><input type="radio" name="heros.accord" value="il">« il »</label>
+    <label><input type="radio" name="heros.accord" value="elle">« elle »</label>
+    <label><input type="radio" name="heros.accord" value="autre">autre (précisez plus bas)</label>
+  </div>
+  <label for="h_apparence">Apparence <span class="hint">(cheveux, couleur de peau, yeux, lunettes, taille…) — utile même avec des photos</span></label>
+  <textarea id="h_apparence" name="heros.apparence"></textarea>
+  <label for="h_vetements">Vêtements ou accessoires préférés</label>
+  <input type="text" id="h_vetements" name="heros.vetements">
+  <label for="h_perso">Caractère <span class="hint">(curieux, timide, farceur, rêveur…)</span></label>
+  <input type="text" id="h_perso" name="heros.caractere">
+  <label for="h_passions">Passions, jeux, animaux, plats préférés</label>
+  <textarea id="h_passions" name="heros.passions"></textarea>
+  <label for="h_doudou">Doudou, animal de compagnie ou objet fétiche</label>
+  <input type="text" id="h_doudou" name="heros.doudou">
+  <label for="h_phrases">Petites phrases ou mots à lui</label>
+  <input type="text" id="h_phrases" name="heros.expressions">
+</fieldset>
+
+<fieldset>
+  <legend>Son entourage dans l'histoire <span class="hint">(jusqu'à 4 personnes ou animaux)</span></legend>
+  <div id="people"></div>
+  <button type="button" id="addPerson">+ Ajouter une personne</button>
+</fieldset>
+
+<fieldset>
+  <legend>Lieux</legend>
+  <label for="lx_ville">Ville, pays, culture à faire apparaître</label>
+  <input type="text" id="lx_ville" name="lieux.ville_pays">
+  <label for="lx_lieux">Lieux importants <span class="hint">(la maison de mamie, le parc, l'école, le village…)</span></label>
+  <textarea id="lx_lieux" name="lieux.lieux"></textarea>
+</fieldset>
+
+<fieldset>
+  <legend>À éviter</legend>
+  <label for="ev">Peurs, sujets sensibles, choses à ne pas montrer</label>
+  <textarea id="ev" name="a_eviter"></textarea>
+</fieldset>
+
+<fieldset>
+  <legend>Photos (facultatif)</legend>
+  <p class="hint">Une photo nette du visage, de face et bien éclairée, par personne à dessiner. Les photos servent uniquement à créer le personnage illustré : elles ne sont jamais imprimées dans le livre.</p>
+  <input type="file" id="photoInput" accept="image/*" multiple>
+  <div class="photos" id="photos"></div>
+  <div class="consent">
+    <label style="font-weight:600;margin:0"><input type="checkbox" id="consent" name="consentement.photos"> J'autorise l'utilisation de ces photos pour créer les personnages de ce livre. Si une photo montre un enfant mineur, je confirme être son parent ou son représentant légal, ou avoir l'accord de celui-ci.</label>
+    <div class="row">
+      <div><label for="cs_nom">Nom de la personne qui donne l'accord</label><input type="text" id="cs_nom" name="consentement.nom"></div>
+      <div><label for="cs_date">Date</label><input type="date" id="cs_date" name="consentement.date"></div>
+    </div>
+  </div>
+</fieldset>
+
+<fieldset>
+  <legend>Autre chose ?</legend>
+  <textarea name="notes"></textarea>
+</fieldset>
+
+<div class="actions">
+  <button type="button" class="primary" id="share">Envoyer mes réponses sur WhatsApp</button>
+  <button type="button" id="dl">Télécharger mes réponses</button>
+  <button type="button" id="copy">Copier en texte</button>
+</div>
+<div id="msg"></div>
+<p class="hint">Le bouton vert ouvre WhatsApp avec vos réponses en pièce jointe : choisissez <strong id="studioContact">votre studio</strong> et envoyez. Sinon, téléchargez le fichier et envoyez-le par WhatsApp ou e-mail.</p>
+</form>
+</main>
+<script>
+/* Personnalisation : nom et contact du studio affichés au client ; whatsapp = numéro international sans + ni espaces
+   (ex. 2376XXXXXXXX), utilisé quand le téléphone ne sait pas partager un fichier directement. */
+var STUDIO = {"nom": "Williams BIAMOU Studio", "contact": "Williams BIAMOU Studio", "whatsapp": "237692885988"};
+document.getElementById('studioName').textContent = STUDIO.nom;
+document.getElementById('studioContact').textContent = STUDIO.contact;
+
+var photos = [];
+var peopleBox = document.getElementById('people');
+function addPerson() {
+  var n = peopleBox.children.length;
+  if (n >= 4) return;
+  var d = document.createElement('div');
+  d.className = 'person';
+  d.innerHTML = '<div class="row"><div><label>Prénom ou nom</label><input type="text" data-p="nom"></div>' +
+    '<div><label>Lien avec le héros</label><input type="text" data-p="lien" placeholder="maman, grand-père, chat…"></div></div>' +
+    '<label>Description <span class="hint">(apparence, caractère)</span></label><input type="text" data-p="description">';
+  peopleBox.appendChild(d);
+}
+document.getElementById('addPerson').onclick = addPerson;
+addPerson();
+
+function resize(file) {
+  return new Promise(function (resolve, reject) {
+    var img = new Image(), url = URL.createObjectURL(file);
+    img.onload = function () {
+      var max = 1280, s = Math.min(1, max / Math.max(img.width, img.height));
+      var c = document.createElement('canvas');
+      c.width = Math.round(img.width * s); c.height = Math.round(img.height * s);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      URL.revokeObjectURL(url);
+      resolve(c.toDataURL('image/jpeg', 0.86));
+    };
+    img.onerror = reject;
+    img.src = url;
+  });
+}
+function drawPhotos() {
+  var box = document.getElementById('photos');
+  box.innerHTML = '';
+  photos.forEach(function (p, i) {
+    var d = document.createElement('div');
+    d.className = 'photo';
+    d.innerHTML = '<img alt=""><input type="text" placeholder="Qui est-ce ?"><button type="button">Retirer</button>';
+    d.querySelector('img').src = p.data;
+    var inp = d.querySelector('input'); inp.value = p.qui || '';
+    inp.oninput = function () { p.qui = inp.value; };
+    d.querySelector('button').onclick = function () { photos.splice(i, 1); drawPhotos(); };
+    box.appendChild(d);
+  });
+}
+document.getElementById('photoInput').onchange = function (e) {
+  var files = Array.prototype.slice.call(e.target.files).slice(0, 8 - photos.length);
+  Promise.all(files.map(resize)).then(function (datas) {
+    datas.forEach(function (d, i) { photos.push({ nom: files[i].name, qui: '', data: d }); });
+    drawPhotos(); e.target.value = '';
+  });
+};
+
+function collect() {
+  var out = { version: 1, cree_le: new Date().toISOString(), studio: STUDIO.nom };
+  var f = document.getElementById('f');
+  Array.prototype.forEach.call(f.elements, function (el) {
+    if (!el.name || el.type === 'file') return;
+    var path = el.name.split('.'), obj = out;
+    for (var i = 0; i < path.length - 1; i++) { obj[path[i]] = obj[path[i]] || {}; obj = obj[path[i]]; }
+    var key = path[path.length - 1];
+    if (el.type === 'checkbox' && el.value && el.value !== 'on') {
+      obj[key] = obj[key] || [];
+      if (el.checked) obj[key].push(el.value);
+    } else if (el.type === 'checkbox') { obj[key] = el.checked; }
+    else if (el.type === 'radio') { if (el.checked) obj[key] = el.value; else if (!(key in obj)) obj[key] = ''; }
+    else obj[key] = el.value.trim();
+  });
+  out.entourage = Array.prototype.map.call(peopleBox.children, function (d) {
+    var o = {}; d.querySelectorAll('[data-p]').forEach(function (i) { o[i.dataset.p] = i.value.trim(); }); return o;
+  }).filter(function (o) { return o.nom || o.description; });
+  out.photos = photos;
+  return out;
+}
+function summary(o) {
+  var lines = ['Livre personnalisé — ' + (o.heros.prenom || '?') + ' (' + (o.heros.age || '?') + ')'];
+  lines.push('Occasion : ' + (o.livre.occasion || '-') + ' · Ton : ' + (o.livre.ton || []).join(', '));
+  lines.push('Idée : ' + (o.livre.idee || '-'));
+  lines.push('Valeur : ' + (o.livre.valeur || '-'));
+  lines.push('Apparence : ' + (o.heros.apparence || '-'));
+  lines.push('Caractère : ' + (o.heros.caractere || '-') + ' · Passions : ' + (o.heros.passions || '-'));
+  o.entourage.forEach(function (p) { lines.push('Entourage : ' + p.nom + ' (' + p.lien + ') ' + p.description); });
+  lines.push('Lieux : ' + (o.lieux.ville_pays || '-') + ' · ' + (o.lieux.lieux || ''));
+  lines.push('À éviter : ' + (o.a_eviter || '-'));
+  lines.push('Dédicace : ' + (o.livre.dedicace || '-'));
+  lines.push('Photos : ' + o.photos.length + (o.photos.length ? ' (accord : ' + (o.consentement.photos ? 'oui' : 'NON') + ')' : ''));
+  return lines.join('\n');
+}
+function msg(t) { document.getElementById('msg').textContent = t; }
+function answers() {
+  var o = collect();
+  if (o.photos.length && !o.consentement.photos) { msg("Merci de cocher l'accord pour les photos (ou de retirer les photos)."); return null; }
+  return { o: o, base: 'questionnaire_' + (o.heros.prenom || 'livre').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+           text: JSON.stringify(o, null, 1) };
+}
+function download(name, text, type) {
+  var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([text], { type: type })); a.download = name; a.click();
+}
+document.getElementById('dl').onclick = function () {
+  var r = answers(); if (!r) return;
+  download(r.base + '.json', r.text, 'application/json');
+  msg('Fichier « ' + r.base + '.json » téléchargé. Envoyez-le à ' + STUDIO.contact + '.');
+};
+/* Partage direct (Android, iPhone) : le fichier part en .txt, type accepté partout par le partage du téléphone ;
+   son contenu reste le même et s'importe pareil. */
+document.getElementById('share').onclick = function () {
+  var r = answers(); if (!r) return;
+  var intro = 'Bonjour, voici mes réponses pour le livre de ' + (r.o.heros.prenom || 'mon enfant') + '.';
+  var file = null;
+  try { file = new File([r.text], r.base + '.txt', { type: 'text/plain' }); } catch (e) {}
+  if (file && navigator.canShare && navigator.canShare({ files: [file] })) {
+    navigator.share({ files: [file], title: 'Questionnaire livre personnalisé', text: intro }).then(function () {
+      msg('Merci ! Vos réponses sont envoyées.');
+    }, function (e) { if (e && e.name !== 'AbortError') msg("Le partage n'a pas marché : utilisez « Télécharger mes réponses »."); });
+    return;
+  }
+  download(r.base + '.json', r.text, 'application/json');
+  if (STUDIO.whatsapp) {
+    window.open('https://wa.me/' + STUDIO.whatsapp + '?text=' + encodeURIComponent(intro + ' Je joins le fichier « ' + r.base + '.json ».'), '_blank');
+    msg('Fichier téléchargé et WhatsApp ouvert : joignez le fichier « ' + r.base + '.json » au message (trombone 📎).');
+  } else {
+    msg('Fichier « ' + r.base + '.json » téléchargé. Envoyez-le à ' + STUDIO.contact + ' par WhatsApp (trombone 📎) ou e-mail.');
+  }
+};
+document.getElementById('copy').onclick = function () {
+  var t = summary(collect());
+  (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { msg('Résumé copié : collez-le dans un message.'); },
+    function () { msg(t); });
+};
+</script>
+</body>
+</html>
